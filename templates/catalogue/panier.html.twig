@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <h3>Panier</h3>
+
+    <div class="row">
+        <div class="col-12">
+            <hr>
+        </div>
+    {% for item in panier %}
+        <div class="col-2">
+            <img src="/images/{{item.produit.image}}" class="img-fluid img-categorie">
+        </div>
+        <div class="col-7">
+            <h3>
+                {{item.produit.nom}}
+            </h3>
+        </div>
+        <div class="col-3">
+            <a href="{{ path("add", { produit: item.produit.id, quantite: -1}) }}" class="btn btn-secondary">-</a>
+            <input type="text" name="" id="" value="{{item.quantite}}" readonly >
+            <a href="{{ path("add", { produit: item.produit.id, quantite: 1}) }}" class="btn btn-secondary">+</a>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    {% endfor %}
+        <div class="col-12">
+            <a href="{{ path("clear") }}" class="btn btn-primary" >Vider la panier</a>
+        </div>
+    </div>
+
+     
+
+{% endblock %}
+
+
+
