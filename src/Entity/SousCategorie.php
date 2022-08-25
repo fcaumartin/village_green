@@ -2,30 +2,43 @@
 
 namespace App\Entity;
 
-use App\Repository\SousCategorieRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SousCategorieRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SousCategorieRepository::class)
  */
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:sous_categorie"]]
+)]
+#[ApiFilter(SearchFilter::class, properties: [
+    "categorie.id" => "exact"
+])]
 class SousCategorie
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:produit", "read:sous_categorie"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:produit", "read:sous_categorie"})
      */
     private $nom;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="sousCategories")
+     * @Groups({"read:produit", "read:sous_categorie"})
      */
     private $categorie;
 
@@ -35,7 +48,7 @@ class SousCategorie
     private $produits;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
