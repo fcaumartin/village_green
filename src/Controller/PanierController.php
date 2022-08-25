@@ -39,7 +39,7 @@ class PanierController extends AbstractController
                 
         $session->set("panier", $panier);
 
-        dump($panier);
+        // dump($panier);
 
         $previous_route = $request->headers->get('referer');
 
