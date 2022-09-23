@@ -1,0 +1,30 @@
+{
+  "name": "parcel-react-bootstrap-template",
+  "version": "0.0.1",
+  "source": [
+    "./src/index.js"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.2.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^17.0.2"
+  },
+  "targets": {
+    "default": {
+      "distDir": "../../public/app/desktop"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ../../public/app/desktop",
+    "start": "parcel src/index.html",
+    "build": "parcel build --no-source-maps",
+    "watch": "parcel watch --no-source-maps"
+  }
+}

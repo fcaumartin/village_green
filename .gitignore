@@ -18,3 +18,11 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+
+### react
+/react/*/node_modules
+/react/*/.parcel-cache/
+/react/*/.expo/
+
+
