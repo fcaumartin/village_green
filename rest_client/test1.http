@@ -1,0 +1,28 @@
+
+@baseUrl = https://127.0.0.1:8000
+
+
+# @name login
+POST {{baseUrl}}/api/login_check
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "1234"
+}
+
+############################################
+### TOKEN
+############################################
+
+@authToken = {{login.response.body.token}}
+
+###
+
+GET {{baseUrl}}/api/produits
+Authorization: Bearer {{authToken}}
+
+
+###
+
+GET {{baseUrl}}/api/produits
