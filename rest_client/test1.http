@@ -12,10 +12,20 @@ Content-Type: application/json
 }
 
 ############################################
-### TOKEN
+### JWT
 ############################################
 
-@authToken = {{login.response.body.token}}
+@refresh_token = {{login.response.body.refresh_token}}
+@tokens = {{login.response.body.token}}
+
+###
+POST {{baseUrl}}/token/refresh
+Content-Type: application/json
+
+{
+    "refresh_token": {{refresh_token}}
+}
+
 
 ###
 

@@ -28,10 +28,15 @@ security:
             stateless: true
             jwt: ~
 
+        refresh:
+            pattern:  ^/token/refresh
+            stateless: true
+            # anonymous: true
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-            
+
         main:
             lazy: true
             provider: app_user_provider
@@ -52,6 +57,7 @@ security:
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
