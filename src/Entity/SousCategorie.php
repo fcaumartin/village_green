@@ -11,9 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @ORM\Entity(repositoryClass=SousCategorieRepository::class)
- */
+#[ORM\Entity(repositoryClass: SousCategorieRepository::class)]
 #[ApiResource(
     normalizationContext: [ "groups" => ["read:sous_categorie"]]
 )]
@@ -22,34 +20,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
 ])]
 class SousCategorie
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     * @Groups({"read:produit", "read:sous_categorie"})
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    #[Groups(["read:produit", "read:sous_categorie"])]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"read:produit", "read:sous_categorie"})
-     */
+    #[ORM\Column(type: "string")]
     private $nom;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="sousCategories")
-     * @Groups({"read:produit", "read:sous_categorie"})
-     */
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: "sousCategories")]
+    #[Groups(["read:produit", "read:sous_categorie"])]
     private $categorie;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="sousCategorie")
-     */
+    #[ORM\OneToMany(targetEntity: Produit::class, mappedBy: "sousCategorie")]
     private $produits;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
     private $image;
 
     public function __construct()

@@ -8,33 +8,23 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @ORM\Entity(repositoryClass=CategorieRepository::class)
- */
+#[ORM\Entity(repositoryClass: CategorieRepository::class) ]
 class Categorie
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     * @Groups({"read:produit", "read:sous_categorie"})
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    #[Groups(["read:produit", "read:sous_categorie"])]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"read:produit", "read:sous_categorie"})
-     */
+    #[ORM\Column(type:"string", length:255)]
+    #[Groups(["read:produit", "read:sous_categorie"])]
     private $nom;
 
-    /**
-     * @ORM\OneToMany(targetEntity=SousCategorie::class, mappedBy="categorie")
-     */
+    #[ORM\OneToMany(targetEntity: SousCategorie::class, mappedBy: "categorie")]
     private $sousCategories;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: "string", length: 255)]
     private $image;
 
     public function __construct()

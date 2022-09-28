@@ -7,47 +7,32 @@ use App\Repository\ProduitRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @ORM\Entity(repositoryClass=ProduitRepository::class)
- */
 #[ApiResource(
     normalizationContext: [ "groups" => ["read:produit"]]
 )]
+#[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     * @Groups("read:produit")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    #[Groups(["read:produit"])]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups("read:produit")
-     */
+    #[ORM\Column(type: "string", length: 255)]
     private $nom;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: "text", nullable: true)]
     private $description;
 
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
+    #[ORM\Column(type: "float")]
     private $prix;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
     private $image;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=SousCategorie::class, inversedBy="produits")
-     * @Groups("read:produit")
-     */
+    #[ORM\ManyToOne(targetEntity: SousCategorie::class, inversedBy: "produits")]
+    #[Groups("read:produit")]
     private $sousCategorie;
 
     public function getId(): ?int
