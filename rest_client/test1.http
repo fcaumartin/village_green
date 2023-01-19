@@ -15,22 +15,22 @@ Content-Type: application/json
 ### JWT
 ############################################
 
-@refresh_token = {{login.response.body.refresh_token}}
-@tokens = {{login.response.body.token}}
+@jwtToken = {{login.response.body.$.token}}
+@refreshToken = {{login.response.body.$.refresh_token}}
 
 ###
 POST {{baseUrl}}/token/refresh
 Content-Type: application/json
 
 {
-    "refresh_token": {{refresh_token}}
+    "refresh_token": "{{refreshToken}}"
 }
 
 
 ###
 
 GET {{baseUrl}}/api/produits
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{jwtToken}}
 
 
 ###
