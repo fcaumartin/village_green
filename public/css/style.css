@@ -1,0 +1,21 @@
+.img-categorie {
+    width: 70%
+}
+
+.img-produit {
+    height: 100px
+}
+
+
+.categorie {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+
+.categorie-texte {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

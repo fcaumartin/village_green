@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path("accueil") }}">Accueil</a></li>
+    </ol>
+    </nav>
+
+    <div class="row">
+        {% for categorie in categories %}
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3 mt-2 ">
+                <div class="categorie text-center">
+                    <a href="{{ path("categorie", { categorie: categorie.id }) }}">
+                        {# <div class="card" style="">
+                            <img src="/images/{{ categorie.image }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ categorie.nom }}</h5>
+                                
+                            </div>
+                        </div> #}
+                        <img src="/images/{{ categorie.image }}" class="img-fluid  img-categorie">
+                        <div class="text-center categorie-texte">
+                            {{ categorie.nom }}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

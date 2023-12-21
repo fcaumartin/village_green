@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path("accueil") }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path("categorie", { categorie: produit.sousCategorie.categorie.id }) }}">{{ produit.sousCategorie.categorie.nom }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path("souscategorie", { souscategorie: produit.sousCategorie.id }) }}">{{ produit.sousCategorie.nom }}</a></li>
+    </ol>
+    </nav>
+
+    <div class="row">
+            <div class="col-6">
+                <img src="/images/{{ produit.image }}" class="img-fluid">
+                
+            </div>
+            <div class="col-6">
+                <h2 class="text-left ">
+                    {{ produit.nom }}
+                </h2>
+                <h3>{{ produit.prix }} €</h3>
+                <div class="text-left">
+                    {{ produit.description | nl2br }}
+                    <a href="{{ path("add", { produit: produit.id }) }}" class="btn btn-primary float-end">Ajouter au panier</a>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

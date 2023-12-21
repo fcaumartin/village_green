@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path("accueil") }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path("categorie", { categorie: categorie.id }) }}">{{ categorie.nom }}</a></li>
+    </ol>
+    </nav>
+
+    <div class="row">
+        {% for sousCategorie in categorie.sousCategories %}
+            <div class="col-4 mt-3 ">
+            <a href="{{ path("souscategorie", { souscategorie: sousCategorie.id}) }}">
+                <img src="/images/{{ sousCategorie.image }}" class="img-fluid img-categorie">
+                <div class="text-center">
+                    {{ sousCategorie.nom }}
+                </div>
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
