@@ -21,11 +21,11 @@ class Products extends Fixture
         $cat1->setImage("cat1.webp");
         $manager->persist($cat1);
         
-        $cat11 = new SousCategorie();
-        $cat11->setNom("Gui­tares Elec­triques");
-        $cat11->setImage("cat11.webp");
-        $cat11->setCategorie($cat1);
-        $manager->persist($cat11);
+        $cat1_1 = new SousCategorie();
+        $cat1_1->setNom("Gui­tares Elec­triques");
+        $cat1_1->setImage("cat1_1.webp");
+        $cat1_1->setCategorie($cat1);
+        $manager->persist($cat1_1);
 
         $pro111 = new Produit();
         $pro111->setNom("Fender AM Perf Tele RW HBST");
@@ -47,7 +47,7 @@ class Products extends Fixture
         ");
         $pro111->setPrix(1199);
         $pro111->setImage("pro111.jpg");
-        $pro111->setSousCategorie($cat11);
+        $pro111->setSousCategorie($cat1_1);
         $manager->persist($pro111);
 
         $pro112 = new Produit();
@@ -77,7 +77,7 @@ class Products extends Fixture
         ");
         $pro112->setPrix(2290);
         $pro112->setImage("pro112.jpg");
-        $pro112->setSousCategorie($cat11);
+        $pro112->setSousCategorie($cat1_1);
         $manager->persist($pro112);
 
         $pro113 = new Produit();
@@ -103,7 +103,7 @@ class Products extends Fixture
         ");
         $pro113->setPrix(3799);
         $pro113->setImage("pro113.jpg");
-        $pro113->setSousCategorie($cat11);
+        $pro113->setSousCategorie($cat1_1);
         $manager->persist($pro113);
 
         $pro114 = new Produit();
@@ -129,32 +129,32 @@ class Products extends Fixture
         ");
         $pro114->setPrix(4990);
         $pro114->setImage("pro114.jpg");
-        $pro114->setSousCategorie($cat11);
+        $pro114->setSousCategorie($cat1_1);
         $manager->persist($pro114);
 
-        $cat12 = new SousCategorie();
-        $cat12->setNom("Gui­tares Clas­siques");
-        $cat12->setImage("cat12.webp");
-        $cat12->setCategorie($cat1);
-        $manager->persist($cat12);
+        $cat1_2 = new SousCategorie();
+        $cat1_2->setNom("Gui­tares Clas­siques");
+        $cat1_2->setImage("cat1_2.webp");
+        $cat1_2->setCategorie($cat1);
+        $manager->persist($cat1_2);
 
-        $cat13 = new SousCategorie();
-        $cat13->setNom("Basses Elec­triques");
-        $cat13->setImage("cat13.webp");
-        $cat13->setCategorie($cat1);
-        $manager->persist($cat13);
+        $cat1_3 = new SousCategorie();
+        $cat1_3->setNom("Basses Elec­triques");
+        $cat1_3->setImage("cat1_3.webp");
+        $cat1_3->setCategorie($cat1);
+        $manager->persist($cat1_3);
 
-        $cat14 = new SousCategorie();
-        $cat14->setNom("Am­pli­fi­ca­teurs Gui­tares");
-        $cat14->setImage("cat14.webp");
-        $cat14->setCategorie($cat1);
-        $manager->persist($cat14);
+        $cat1_4 = new SousCategorie();
+        $cat1_4->setNom("Am­pli­fi­ca­teurs Gui­tares");
+        $cat1_4->setImage("cat1_4.webp");
+        $cat1_4->setCategorie($cat1);
+        $manager->persist($cat1_4);
 
-        $cat15 = new SousCategorie();
-        $cat15->setNom("Am­pli­fi­ca­teurs Basses");
-        $cat15->setImage("cat15.webp");
-        $cat15->setCategorie($cat1);
-        $manager->persist($cat15);
+        $cat1_5 = new SousCategorie();
+        $cat1_5->setNom("Am­pli­fi­ca­teurs Basses");
+        $cat1_5->setImage("cat1_5.webp");
+        $cat1_5->setCategorie($cat1);
+        $manager->persist($cat1_5);
 
         ####################################################################################################
         ####################################################################################################

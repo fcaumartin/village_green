@@ -20,16 +20,21 @@
         </div>
         <div class="col-3">
             <a href="{{ path("add", { produit: item.produit.id, quantite: -1}) }}" class="btn btn-secondary">-</a>
-            <input type="text" name="" id="" value="{{item.quantite}}" readonly >
+            <input type="text" name="" id="" value="{{item.quantite}}" readonly style="width: 50%">
             <a href="{{ path("add", { produit: item.produit.id, quantite: 1}) }}" class="btn btn-secondary">+</a>
         </div>
         <div class="col-12">
             <hr>
         </div>
-    {% endfor %}
+            
         <div class="col-12">
             <a href="{{ path("clear") }}" class="btn btn-primary" >Vider la panier</a>
         </div>
+    {% else %}
+        <div class="col-12">
+            Votre panier est vide...
+        </div>
+    {% endfor %}
     </div>
 
      

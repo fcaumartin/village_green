@@ -18,6 +18,7 @@ class PanierController extends AbstractController
 
         $panier = $panier?$panier:[];
 
+        // Le produit est-il présent dans le panier ?
         $present = -1;
         foreach($panier as $k => $v) {
             if ($v["produit"]->getId()==$produit->getId()) {
@@ -33,11 +34,20 @@ class PanierController extends AbstractController
         }
         else {
             $panier[$present]["quantite"]+=$quantite;
+            // Supprime le produit si la quantité est infèrieur à zéro
+            if ($present>0 && $panier[$present]["quantite"]<=0) {
+                unset($panier[$present]);
+            }
+        }
+
+        // Supprime le produit si la quantité est infèrieur à zéro
+        if ($present>0 && $panier[$present]["quantite"]<=0) {
+            unset($panier[$present]);
         }
                 
         $session->set("panier", $panier);
 
-        // dump($panier);
+        // dd($panier);
 
         $previous_route = $request->headers->get('referer');
 

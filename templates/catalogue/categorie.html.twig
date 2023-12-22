@@ -11,13 +11,22 @@
 
     <div class="row">
         {% for sousCategorie in categorie.sousCategories %}
-            <div class="col-4 mt-3 ">
-            <a href="{{ path("souscategorie", { souscategorie: sousCategorie.id}) }}">
-                <img src="/images/{{ sousCategorie.image }}" class="img-fluid img-categorie">
-                <div class="text-center">
-                    {{ sousCategorie.nom }}
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3 mt-2 ">
+                <div class="categorie text-center">
+                    <a href="{{ path("souscategorie", { souscategorie: sousCategorie.id }) }}">
+                        {# <div class="card" style="">
+                            <img src="/images/{{ categorie.image }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ categorie.nom }}</h5>
+                                
+                            </div>
+                        </div> #}
+                        <img src="/images/{{ sousCategorie.image }}" class="img-fluid  img-categorie">
+                        <div class="text-center categorie-texte">
+                            {{ sousCategorie.nom }}
+                        </div>
+                    </a>
                 </div>
-            </a>
             </div>
         {% endfor %}
     </div>
