@@ -20,12 +20,15 @@ class Produit
     private $id;
 
     #[ORM\Column(type: "string", length: 255)]
+    #[Groups(["read:produit"])]
     private $nom;
 
     #[ORM\Column(type: "text", nullable: true)]
+    #[Groups(["read:produit"])]
     private $description;
 
     #[ORM\Column(type: "float")]
+    #[Groups(["read:produit"])]
     private $prix;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]

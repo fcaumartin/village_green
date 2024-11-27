@@ -1,0 +1,15 @@
+GET http://127.0.0.1:8000/api/produits
+Accept: application/json
+
+###
+
+
+GET http://127.0.0.1:8000/api/categories
+Accept: application/json
+
+###
+
+
+
+GET http://127.0.0.1:8000/api/sous_categories?categorie.id=1
+Accept: application/json
