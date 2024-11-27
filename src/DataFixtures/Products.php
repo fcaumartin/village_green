@@ -17,12 +17,12 @@ class Products extends Fixture
         ####################################################################################################
         ####################################################################################################
         $cat1 = new Categorie();
-        $cat1->setNom("Gui­tares & Basses");
+        $cat1->setNom("Guitares & Basses");
         $cat1->setImage("cat1.webp");
         $manager->persist($cat1);
         
         $cat1_1 = new SousCategorie();
-        $cat1_1->setNom("Gui­tares Elec­triques");
+        $cat1_1->setNom("Guitares Electriques");
         $cat1_1->setImage("cat1_1.webp");
         $cat1_1->setCategorie($cat1);
         $manager->persist($cat1_1);
