@@ -1,0 +1,34 @@
+@startuml
+class Categorie {
+	**id : **
+	nom : 
+	<color:#0000dd>sousCategories : </color>
+	image : 
+}
+
+class Produit {
+	**id : **
+	nom : 
+	description : 
+	prix : 
+	image : 
+	<color:#0000dd>sousCategorie : </color>
+}
+
+class SousCategorie {
+	**id : **
+	nom : 
+	<color:#0000dd>categorie : </color>
+	<color:#0000dd>produits : </color>
+	image : 
+}
+
+Categorie "1"--"*" SousCategorie
+Produit "*"--"1" SousCategorie
+
+
+hide methods
+
+hide circle
+
+@enduml
