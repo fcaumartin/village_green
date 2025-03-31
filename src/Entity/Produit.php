@@ -4,11 +4,19 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ProduitRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
-    normalizationContext: [ "groups" => ["read:produit"]]
+    normalizationContext: [ "groups" => ["read:produit"]],
+
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+
 )]
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit

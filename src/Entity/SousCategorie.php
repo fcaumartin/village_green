@@ -9,11 +9,19 @@ use App\Repository\SousCategorieRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SousCategorieRepository::class)]
 #[ApiResource(
-    normalizationContext: [ "groups" => ["read:sous_categorie"]]
+    normalizationContext: [ "groups" => ["read:sous_categorie"]],
+
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+
 )]
 #[ApiFilter(SearchFilter::class, properties: [
     "categorie.id" => "exact"
