@@ -46,6 +46,7 @@ jobs:
 
             
   deploy_job:
+    needs: symfony-tests
     runs-on: ubuntu-latest
     name: Deploy with Password
     steps:
@@ -58,7 +59,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           server: ${{ secrets.FTP_SERVER }}
           port: ${{ secrets.FTP_PORT }}
-          local_path: '/home/frc/village_green/*'
+          local_path: './*'
           remote_path: '/homez.1628/cznrhxj/cda24297/frc/'
           sftp_only: true
           password: ${{ secrets.FTP_PASSWORD }}
