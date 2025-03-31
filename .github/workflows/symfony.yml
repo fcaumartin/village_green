@@ -63,3 +63,8 @@ jobs:
           remote_path: '/homez.1628/cznrhxj/cda24297/frc/'
           sftp_only: true
           password: ${{ secrets.FTP_PASSWORD }}
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          command: composer install
