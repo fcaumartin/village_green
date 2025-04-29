@@ -22,49 +22,26 @@ jobs:
       with:
         php-version: '8.2'
         extensions: sqlite3, intl, mbstring
+
     - uses: actions/checkout@v4
+
     - name: Copy .env.test.local
       run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
-    - name: Cache Composer packages
-      uses: actions/cache@v3
-      id: composer-cache
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      
     - name: Create Database
+      env:
+        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
       run: |
-        mkdir -p data
-        touch data/database.sqlite
+        php bin/console d:d:d --force --env=test
+        php bin/console d:d:c --env=test
+        php bin/console d:s:u --force --complete --env=test
+        php bin/console d:f:l --append --env=test
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
       run: vendor/bin/phpunit
 
-            
-  deploy_job:
-    needs: symfony-tests
-    runs-on: ubuntu-latest
-    name: Deploy with Password
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Deploy with Password
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
-        with:
-          username: ${{ secrets.FTP_USERNAME }}
-          server: ${{ secrets.FTP_SERVER }}
-          port: ${{ secrets.FTP_PORT }}
-          local_path: './*'
-          remote_path: '/homez.1628/cznrhxj/cda24297/frc/'
-          sftp_only: true
-          password: ${{ secrets.FTP_PASSWORD }}
-
-      - name: Install dependencies
-        uses: php-actions/composer@v6
-        with:
-          command: composer install
